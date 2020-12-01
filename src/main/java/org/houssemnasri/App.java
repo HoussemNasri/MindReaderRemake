@@ -7,7 +7,10 @@ import javafx.stage.Stage;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 
+import de.saxsys.mvvmfx.utils.notifications.NotificationCenterFactory;
 import org.apache.log4j.Logger;
+import org.houssemnasri.preferences.AppPreferences;
+import org.houssemnasri.preferences.PreferencesService;
 import org.houssemnasri.ui.mainmenu.MainMenuView;
 import org.houssemnasri.ui.mainmenu.MainMenuViewModel;
 
@@ -17,9 +20,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        LOGGER.debug("Hello");
+        AppPreferences preferences = AppPreferences.getInstance();
+        preferences.setMinRange(15);
+        preferences.setMaxRange(200);
+
         ViewTuple<MainMenuView, MainMenuViewModel> mainMenuTuple =
-                FluentViewLoader.fxmlView(MainMenuView.class).load();
+                FluentViewLoader.fxmlView(MainMenuView.class)
+                                .viewModel(new MainMenuViewModel(preferences, stage))
+                                .load();
 
         stage.setScene(new Scene(mainMenuTuple.getView()));
         stage.setTitle(WINDOW_TITLE);

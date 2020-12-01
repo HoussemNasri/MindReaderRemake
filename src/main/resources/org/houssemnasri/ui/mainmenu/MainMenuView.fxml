@@ -2,11 +2,16 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.houssemnasri.ui.mainmenu.MainMenuView">
    <children>
-      <Button layoutX="158.0" layoutY="143.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="317.0" text="Button" />
-      <Button layoutX="224.0" layoutY="47.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="330.0" text="Button" />
+      <VBox layoutX="167.0" layoutY="72.0" prefHeight="200.0" prefWidth="271.0" spacing="25.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <Button id="resumeButton" fx:id="resumeButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="500.0" text="Resume" />
+            <Button id="newGameButton" fx:id="newGameButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="500.0" text="New Game" />
+            <Button id="helpButton" fx:id="helpButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="500.0" text="Help" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
