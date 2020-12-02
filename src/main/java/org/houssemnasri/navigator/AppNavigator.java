@@ -2,6 +2,7 @@ package org.houssemnasri.navigator;
 
 import java.util.Objects;
 
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -10,6 +11,8 @@ import org.houssemnasri.exceptions.NavigatorNotInitializedException;
 import org.houssemnasri.preferences.PreferencesService;
 import org.houssemnasri.ui.findyournumber.FindYourNumberView;
 import org.houssemnasri.ui.findyournumber.FindYourNumberViewModel;
+import org.houssemnasri.ui.mainmenu.MainMenuView;
+import org.houssemnasri.ui.mainmenu.MainMenuViewModel;
 import org.houssemnasri.ui.showprediction.ShowPredictionView;
 import org.houssemnasri.ui.showprediction.ShowPredictionViewModel;
 
@@ -41,18 +44,31 @@ public class AppNavigator {
         ViewTuple<FindYourNumberView, FindYourNumberViewModel> findYourNumberView =
                 FluentViewLoader.fxmlView(FindYourNumberView.class)
                                 .viewModel(new FindYourNumberViewModel(_prefs)).load();
-        loadIntoScene(findYourNumberView);
+        loadViewIntoScene(findYourNumberView);
     }
 
     public void startShowPredictionResultView(int prediction) {
         ViewTuple<ShowPredictionView, ShowPredictionViewModel> findYourNumberView =
                 FluentViewLoader.fxmlView(ShowPredictionView.class)
                                 .viewModel(new ShowPredictionViewModel(prediction)).load();
-        loadIntoScene(findYourNumberView);
+        loadViewIntoScene(findYourNumberView);
     }
 
-    private void loadIntoScene(ViewTuple<?, ?> viewTuple) {
+    public void startMainMenuView() {
+        ViewTuple<MainMenuView, MainMenuViewModel> mainMenuTuple =
+                FluentViewLoader.fxmlView(MainMenuView.class)
+                                .viewModel(new MainMenuViewModel(_prefs, _stage))
+                                .load();
+        loadViewIntoScene(mainMenuTuple);
+    }
+
+    private void loadViewIntoScene(ViewTuple<?, ?> viewTuple) {
         Objects.requireNonNull(_stage);
-        _stage.getScene().setRoot(viewTuple.getView());
+
+        if (_stage.getScene() == null) {
+            _stage.setScene(new Scene(viewTuple.getView()));
+        } else {
+            _stage.getScene().setRoot(viewTuple.getView());
+        }
     }
 }

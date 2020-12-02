@@ -7,11 +7,9 @@ import javafx.stage.Stage;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewTuple;
 
-import de.saxsys.mvvmfx.utils.notifications.NotificationCenterFactory;
 import org.apache.log4j.Logger;
 import org.houssemnasri.navigator.AppNavigator;
 import org.houssemnasri.preferences.AppPreferences;
-import org.houssemnasri.preferences.PreferencesService;
 import org.houssemnasri.ui.mainmenu.MainMenuView;
 import org.houssemnasri.ui.mainmenu.MainMenuViewModel;
 
