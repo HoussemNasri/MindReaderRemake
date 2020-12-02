@@ -10,6 +10,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Pagination;
 
 import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
 
 public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, Initializable {
     @FXML
@@ -24,6 +25,9 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
     @FXML
     private Pagination pagination;
 
+    @InjectViewModel
+    private FindYourNumberViewModel viewModel;
+
     private void advanceToNextPage(){
         pagination.setCurrentPageIndex(pagination.getCurrentPageIndex() + 1);
     }
@@ -32,6 +36,8 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
     public void initialize(URL location, ResourceBundle resources) {
         yesButton.setOnMouseClicked(event -> advanceToNextPage());
         noButton.setOnMouseClicked(event -> advanceToNextPage());
+
+        pagination.currentPageIndexProperty().bind(viewModel.currentPageIndexProperty());
 
     }
 }
