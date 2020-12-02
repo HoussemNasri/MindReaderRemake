@@ -57,7 +57,7 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
         gridPane.setHgap(10);
         gridPane.setVgap(10);
 
-        int columns = 12;
+        int columns = viewModel.getNumberOfColumnsFromPreference();
         int rows = numbers.size() / columns + (numbers.size() % columns > 0 ? 1 : 0);
 
         int counter = 0;
@@ -91,7 +91,7 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
 
         pagination.currentPageIndexProperty().bindBidirectional(viewModel.currentPageIndexProperty());
         pagination.setPageFactory(param -> {
-            List<Integer> numberSet = viewModel.getNumbersetAtBit(param);
+            List<Integer> numberSet = viewModel.getNumbersWithTrueBitAt(param);
             return createNumbersLayout(numberSet);
         });
 

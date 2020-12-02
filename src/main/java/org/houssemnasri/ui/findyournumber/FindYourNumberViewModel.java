@@ -39,7 +39,7 @@ public class FindYourNumberViewModel implements ViewModel {
         return currentPageIndex;
     }
 
-    public List<Integer> getNumbersetAtBit(int bit) {
+    public List<Integer> getNumbersWithTrueBitAt(int bit) {
         return NumbersUtils.generateNumbers(prefs.getMinRange(), prefs.getMaxRange(), bit);
     }
 
@@ -53,6 +53,10 @@ public class FindYourNumberViewModel implements ViewModel {
 
     public ReadOnlyBooleanProperty gameComplemetedProperty() {
         return gameComplemeted;
+    }
+
+    public int getNumberOfColumnsFromPreference() {
+        return prefs.getNumberOfColumns();
     }
 
     public int getPrediction() {
