@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -58,10 +57,12 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
 
         int columns = 12;
         int rows = numbers.size() / columns + (numbers.size() % columns > 0 ? 1 : 0);
+
         int counter = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns && counter < numbers.size(); j++) {
-                int number = numbers.get(counter++);
+                int number = numbers.get(counter);
+                counter = counter + 1;
 
                 Text numberTextView = new Text(String.format("%03d", number));
                 numberTextView.setFont(new Font(18));
@@ -93,8 +94,7 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
         });
 
         viewModel.gameComplemetedProperty().addListener((observable, oldValue, newValue) -> {
-            buttonBar.setDisable(true);
-            LOGGER.info("Prediction : " + viewModel.getPrediction() + " : " + viewModel.getNumberOfQuestionNeededToPredict());
+            viewModel.showPredictionResult();
         });
     }
 }

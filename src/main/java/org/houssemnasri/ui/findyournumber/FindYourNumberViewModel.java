@@ -6,15 +6,15 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 import de.saxsys.mvvmfx.ViewModel;
 import org.houssemnasri.exceptions.GameNotCompletedException;
+import org.houssemnasri.navigator.AppNavigator;
 import org.houssemnasri.preferences.PreferencesService;
-import org.houssemnasri.utils.NumberSetUtils;
+import org.houssemnasri.utils.NumbersUtils;
 
 public class FindYourNumberViewModel implements ViewModel {
     private final PreferencesService prefs;
@@ -40,7 +40,7 @@ public class FindYourNumberViewModel implements ViewModel {
     }
 
     public List<Integer> getNumbersetAtBit(int bit) {
-        return NumberSetUtils.generateNumbers(prefs.getMinRange(), prefs.getMaxRange(), bit);
+        return NumbersUtils.generateNumbers(prefs.getMinRange(), prefs.getMaxRange(), bit);
     }
 
     public void submitAnswer(int answer) {
@@ -68,5 +68,9 @@ public class FindYourNumberViewModel implements ViewModel {
 
     public int log2(int x) {
         return (int) (Math.log(x) / Math.log(2) + 1);
+    }
+
+    public void showPredictionResult() {
+        AppNavigator.getInstance().startShowPredictionResultView(getPrediction());
     }
 }

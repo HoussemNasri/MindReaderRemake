@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.houssemnasri.ui.showprediction.ShowPredictionView">
+   <children>
+      <Text layoutX="156.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The number you thought of is :">
+         <font>
+            <Font name="Franklin Gothic Medium" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="predictionText" layoutX="270.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

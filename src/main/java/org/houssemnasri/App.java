@@ -9,6 +9,7 @@ import de.saxsys.mvvmfx.ViewTuple;
 
 import de.saxsys.mvvmfx.utils.notifications.NotificationCenterFactory;
 import org.apache.log4j.Logger;
+import org.houssemnasri.navigator.AppNavigator;
 import org.houssemnasri.preferences.AppPreferences;
 import org.houssemnasri.preferences.PreferencesService;
 import org.houssemnasri.ui.mainmenu.MainMenuView;
@@ -20,11 +21,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        AppPreferences preferences = AppPreferences.getInstance();
+        AppPreferences prefs = AppPreferences.getInstance();
+        AppNavigator.init(stage, prefs);
 
         ViewTuple<MainMenuView, MainMenuViewModel> mainMenuTuple =
                 FluentViewLoader.fxmlView(MainMenuView.class)
-                                .viewModel(new MainMenuViewModel(preferences, stage))
+                                .viewModel(new MainMenuViewModel(prefs, stage))
                                 .load();
 
         stage.setScene(new Scene(mainMenuTuple.getView()));

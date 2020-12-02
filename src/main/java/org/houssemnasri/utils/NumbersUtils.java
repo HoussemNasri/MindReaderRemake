@@ -3,7 +3,7 @@ package org.houssemnasri.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberSetUtils {
+public class NumbersUtils {
     public static List<Integer> generateNumbers(int from, int to, int bitIndex) {
         List<Integer> result = new ArrayList<>();
         long mask = createMask(bitIndex);
