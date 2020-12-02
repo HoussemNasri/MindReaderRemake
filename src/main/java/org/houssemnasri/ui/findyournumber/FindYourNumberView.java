@@ -4,15 +4,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Pagination;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -44,27 +46,33 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
     }
 
     private Node createNumbersLayout(List<Integer> numbers) {
-        AnchorPane pane = new AnchorPane();
-        Text textView = new Text();
-        textView.setWrappingWidth(350);
-        textView.setFont(new Font(16));
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
 
-        AnchorPane.setBottomAnchor(textView, 20d);
-        AnchorPane.setLeftAnchor(textView, 20d);
-        AnchorPane.setRightAnchor(textView, 20d);
-        AnchorPane.setTopAnchor(textView, 20d);
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.TOP_CENTER);
+        gridPane.setPadding(new Insets(12));
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
 
-        String textContent = createNumbersStringContent(numbers);
-        textView.setText(textContent);
+        int columns = 12;
+        int rows = numbers.size() / columns + (numbers.size() % columns > 0 ? 1 : 0);
+        int counter = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns && counter < numbers.size(); j++) {
+                int number = numbers.get(counter++);
 
-        pane.getChildren().add(textView);
-        return pane;
-    }
+                Text numberTextView = new Text(String.format("%03d", number));
+                numberTextView.setFont(new Font(18));
 
-    private String createNumbersStringContent(List<Integer> numbers) {
-        StringBuilder stringBuilder = new StringBuilder();
-        numbers.forEach(number -> stringBuilder.append(number).append(" "));
-        return stringBuilder.length() > 0 ? stringBuilder.substring(0, stringBuilder.length() - 1) : "";
+                gridPane.add(numberTextView, j, i);
+            }
+        }
+
+        scrollPane.setContent(gridPane);
+
+        return scrollPane;
     }
 
     @Override
@@ -80,7 +88,7 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
 
         pagination.currentPageIndexProperty().bindBidirectional(viewModel.currentPageIndexProperty());
         pagination.setPageFactory(param -> {
-            List<Integer> numberSet = viewModel.getNumberSetAt(param);
+            List<Integer> numberSet = viewModel.getNumbersetAtBit(param);
             return createNumbersLayout(numberSet);
         });
 

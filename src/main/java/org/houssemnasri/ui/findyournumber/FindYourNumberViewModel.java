@@ -39,8 +39,8 @@ public class FindYourNumberViewModel implements ViewModel {
         return currentPageIndex;
     }
 
-    public List<Integer> getNumberSetAt(int index) {
-        return NumberSetUtils.generateNumbers(prefs.getMinRange(), prefs.getMaxRange(), index);
+    public List<Integer> getNumbersetAtBit(int bit) {
+        return NumberSetUtils.generateNumbers(prefs.getMinRange(), prefs.getMaxRange(), bit);
     }
 
     public void submitAnswer(int answer) {
