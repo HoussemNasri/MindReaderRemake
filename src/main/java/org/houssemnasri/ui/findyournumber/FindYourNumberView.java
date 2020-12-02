@@ -21,6 +21,8 @@ import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import org.apache.log4j.Logger;
 
+import static org.houssemnasri.ui.findyournumber.FindYourNumberViewModel.*;
+
 public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, Initializable {
 
     Logger LOGGER = Logger.getLogger(FindYourNumberView.class);
@@ -79,11 +81,11 @@ public class FindYourNumberView implements FxmlView<FindYourNumberViewModel>, In
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         yesButton.setOnMouseClicked(event -> {
-            viewModel.submitAnswer(FindYourNumberViewModel.YES_ANSWER);
+            viewModel.submitAnswer(YES_ANSWER);
             advanceToNextPage();
         });
         noButton.setOnMouseClicked(event -> {
-            viewModel.submitAnswer(FindYourNumberViewModel.NO_ANSWER);
+            viewModel.submitAnswer(NO_ANSWER);
             advanceToNextPage();
         });
 
