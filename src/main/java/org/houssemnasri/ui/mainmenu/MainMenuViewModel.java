@@ -1,18 +1,15 @@
 package org.houssemnasri.ui.mainmenu;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
 import org.houssemnasri.preferences.PreferencesService;
-import org.houssemnasri.ui.secretnumber.SecretNumberView;
-import org.houssemnasri.ui.secretnumber.SecretNumberViewModel;
+import org.houssemnasri.ui.secretnumber.PickANumberView;
+import org.houssemnasri.ui.secretnumber.PickANumberViewModel;
 
 public class MainMenuViewModel implements ViewModel {
     private final BooleanProperty resumeButtonDisabledProperty = new SimpleBooleanProperty(true);
@@ -38,9 +35,9 @@ public class MainMenuViewModel implements ViewModel {
     }
 
     public void startNewGame() {
-        ViewTuple<SecretNumberView, SecretNumberViewModel> secretNumberViewTuple =
-                FluentViewLoader.fxmlView(SecretNumberView.class)
-                                .viewModel(new SecretNumberViewModel(prefs))
+        ViewTuple<PickANumberView, PickANumberViewModel> secretNumberViewTuple =
+                FluentViewLoader.fxmlView(PickANumberView.class)
+                                .viewModel(new PickANumberViewModel(prefs, stage))
                                 .load();
         stage.getScene().setRoot(secretNumberViewTuple.getView());
     }
