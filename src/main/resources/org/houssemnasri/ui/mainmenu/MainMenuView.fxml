@@ -10,7 +10,7 @@
          <children>
             <Button id="resumeButton" fx:id="resumeButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="500.0" text="Resume" />
             <Button id="newGameButton" fx:id="newGameButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="500.0" text="New Game" />
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="781.0" text="Settings" />
+            <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="781.0" text="Settings" />
             <Button id="helpButton" fx:id="helpButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="500.0" text="Help" />
          </children>
       </VBox>
