@@ -21,6 +21,7 @@ public class AppPreferences implements PreferencesService, PreferencesKeys {
     private void initDefaults() {
         defaultsMapping.put(PREF_MIN_RANGE_KEY, 0);
         defaultsMapping.put(PREF_MAX_RANGE_KEY, 100);
+        defaultsMapping.put(PREF_COLUMNS, 12);
     }
 
     public synchronized static AppPreferences getInstance() {
@@ -37,6 +38,16 @@ public class AppPreferences implements PreferencesService, PreferencesKeys {
     @Override
     public int getMaxRange() {
         return preferences.getInt(PREF_MAX_RANGE_KEY, (int) defaultsMapping.get(PREF_MAX_RANGE_KEY));
+    }
+
+    @Override
+    public int getNumberOfColumns() {
+        return preferences.getInt(PREF_COLUMNS, (int) defaultsMapping.get(PREF_COLUMNS));
+    }
+
+    @Override
+    public void setNumberOfColumns(int columns) {
+        preferences.putInt(PREF_COLUMNS, columns);
     }
 
     @Override

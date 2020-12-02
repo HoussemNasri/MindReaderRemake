@@ -8,6 +8,10 @@ public interface PreferencesService {
 
     int getMaxRange();
 
+    int getNumberOfColumns();
+
+    void setNumberOfColumns(int columns);
+
     void setMinRange(int min);
 
     void setMaxRange(int max);
