@@ -26,16 +26,16 @@ public class MainMenuView implements FxmlView<MainMenuViewModel>, Initializable 
     private Button helpButton;
 
     @InjectViewModel
-    private MainMenuViewModel viewmodel;
+    private MainMenuViewModel viewModel;
 
     private final NotificationCenter notificationCenter = NotificationCenterFactory.getNotificationCenter();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        resumeButton.disableProperty().bindBidirectional(viewmodel.resumeButtonDisabledProperty());
+        resumeButton.disableProperty().bindBidirectional(viewModel.resumeButtonDisabledProperty());
 
-        newGameButton.setOnMouseClicked(mouseEvent -> viewmodel.startNewGame());
-        helpButton.setOnMouseClicked(mouseEvent -> viewmodel.openHelpWindow());
-        settingsButton.setOnMouseClicked(mouseEvent -> viewmodel.openSettingsWindow());
+        newGameButton.setOnMouseClicked(mouseEvent -> viewModel.startNewGame());
+        helpButton.setOnMouseClicked(mouseEvent -> viewModel.openHelpWindow());
+        settingsButton.setOnMouseClicked(mouseEvent -> viewModel.openSettingsWindow());
     }
 }
