@@ -22,13 +22,13 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         AppPreferences preferences = AppPreferences.getInstance();
 
-
         ViewTuple<MainMenuView, MainMenuViewModel> mainMenuTuple =
                 FluentViewLoader.fxmlView(MainMenuView.class)
                                 .viewModel(new MainMenuViewModel(preferences, stage))
                                 .load();
 
         stage.setScene(new Scene(mainMenuTuple.getView()));
+        stage.getScene().getStylesheets().add("/_pagination.css");
         stage.setTitle(WINDOW_TITLE);
         stage.show();
     }

@@ -1,0 +1,30 @@
+.pagination {
+    -fx-arrows-visible: false;
+    -fx-tick-labels-visible: false;
+    -fx-tooltip-visible: false;
+    -fx-tick-mark-visible: false;
+}
+
+.pagination .pagination-control {
+    visibility: hidden;
+    -fx-arrows-visible: false;
+    -fx-tick-labels-visible: false;
+    -fx-tooltip-visible: false;
+    -fx-tick-mark-visible: false;
+}
+
+.pagination .pagination-control .bullet-button {
+    visibility: hidden;
+    -fx-arrows-visible: false;
+    -fx-tick-labels-visible: false;
+    -fx-tooltip-visible: false;
+    -fx-tick-mark-visible: false;
+}
+
+.pagination .pagination-control .bullet-button:selected {
+    visibility: hidden;
+    -fx-arrows-visible: false;
+    -fx-tick-labels-visible: false;
+    -fx-tooltip-visible: false;
+    -fx-tick-mark-visible: false;
+}
