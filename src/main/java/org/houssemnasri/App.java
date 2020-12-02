@@ -21,8 +21,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         AppPreferences preferences = AppPreferences.getInstance();
-        preferences.setMinRange(15);
-        preferences.setMaxRange(200);
+
 
         ViewTuple<MainMenuView, MainMenuViewModel> mainMenuTuple =
                 FluentViewLoader.fxmlView(MainMenuView.class)

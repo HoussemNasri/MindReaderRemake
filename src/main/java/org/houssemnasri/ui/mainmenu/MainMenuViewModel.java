@@ -44,4 +44,8 @@ public class MainMenuViewModel implements ViewModel {
                                 .load();
         stage.getScene().setRoot(secretNumberViewTuple.getView());
     }
+
+    public void openSettingsWindow() {
+
+    }
 }

@@ -20,6 +20,9 @@ public class MainMenuView implements FxmlView<MainMenuViewModel>, Initializable 
     private Button newGameButton;
 
     @FXML
+    private Button settingsButton;
+
+    @FXML
     private Button helpButton;
 
     @InjectViewModel
@@ -33,5 +36,6 @@ public class MainMenuView implements FxmlView<MainMenuViewModel>, Initializable 
 
         newGameButton.setOnMouseClicked(mouseEvent -> viewmodel.startNewGame());
         helpButton.setOnMouseClicked(mouseEvent -> viewmodel.openHelpWindow());
+        settingsButton.setOnMouseClicked(mouseEvent -> viewmodel.openSettingsWindow());
     }
 }
